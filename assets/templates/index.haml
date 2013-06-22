@@ -1,8 +1,134 @@
 What should I work on?
 
 %select#language
-  %option Ruby
+  %option JavaScript	
+  %option Ruby	
+  %option Java	
+  %option Shell	
+  %option Python	
+  %option PHP	
+  %option C	
+  %option C++	
+  %option Perl	
+  %option CoffeeScript
+  %option{:value => '' } ---
+  %option ABAP
+  %option ActionScript
+  %option Ada
+  %option Apex
+  %option AppleScript
+  %option Arc
+  %option Arduino
+  %option ASP
+  %option Assembly
+  %option Augeas
+  %option AutoHotkey
+  %option Awk
+  %option Boo
+  %option Bro
+  %option C
+  %option C#
+  %option C++
+  %option Ceylon
+  %option CLIPS
+  %option Clojure
+  %option CoffeeScript
+  %option ColdFusion
+  %option Common Lisp
+  %option Coq
+  %option D
+  %option Dart
+  %option DCPU-16 ASM
+  %option Delphi
+  %option DOT
+  %option Dylan
+  %option eC
+  %option Ecl
+  %option Eiffel
+  %option Elixir
+  %option Emacs Lisp
+  %option Erlang
+  %option F#
+  %option Factor
+  %option Fancy
+  %option Fantom
+  %option Forth
+  %option FORTRAN
+  %option Go
+  %option Gosu
+  %option Groovy
+  %option Haskell
+  %option Haxe
+  %option Io
+  %option Ioke
+  %option Java
   %option JavaScript
+  %option Julia
+  %option Kotlin
+  %option Lasso
+  %option LiveScript
+  %option Logos
+  %option Logtalk
+  %option Lua
+  %option M
+  %option Matlab
+  %option Max
+  %option Mirah
+  %option Monkey
+  %option MoonScript
+  %option Nemerle
+  %option Nimrod
+  %option Nu
+  %option Objective-C
+  %option Objective-J
+  %option OCaml
+  %option Omgrofl
+  %option ooc
+  %option Opa
+  %option OpenEdge ABL
+  %option Parrot
+  %option Perl
+  %option PHP
+  %option Pike
+  %option PogoScript
+  %option PowerShell
+  %option Processing
+  %option Prolog
+  %option Puppet
+  %option Pure Data
+  %option Python
+  %option R
+  %option Racket
+  %option Ragel in Ruby Host
+  %option Rebol
+  %option Rouge
+  %option Ruby
+  %option Rust
+  %option Scala
+  %option Scheme
+  %option Scilab
+  %option Self
+  %option Shell
+  %option Smalltalk
+  %option Standard ML
+  %option SuperCollider
+  %option Tcl
+  %option Turing
+  %option TXL
+  %option TypeScript
+  %option Vala
+  %option Verilog
+  %option VHDL
+  %option VimL
+  %option Visual Basic
+  %option wisp
+  %option XML
+  %option XProc
+  %option XQuery
+  %option XSLT
+  %option Xtend
+
+#issue
 
 %button#new I don't want to do that
 
@@ -13,7 +139,6 @@ What should I work on?
   %a(href='<%= issue.html_url %>')
     <%= issue.html_url %>
 
-  %p
-    <%= issue.body %>
+  <%= marked(issue.body) %>
 
   <% _.each(issue.labels, function(label) { %> <%= label.name %> <% }); %>

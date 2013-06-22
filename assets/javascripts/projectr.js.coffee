@@ -1,13 +1,13 @@
 #= require vendor/jquery-2.0.2.min
 #= require vendor/underscore-min.js
-#= require vendor/mustache.js
+#= require vendor/marked.js
 
 Projectr = {
   languageSelector: '#language'
   apiBaseUrl: "https://api.github.com"
 
   updateIssue: ->
-    @_updateRepo()
+    @_updateRepo() unless @_language() == ''
 
   _updateRepo: ->
     $.ajax(
@@ -48,6 +48,8 @@ Projectr = {
 
 
 $(document).ready ->
+  Projectr.updateIssue()
+
   $('#language').change ->
     issue    = Projectr.updateIssue()
 
