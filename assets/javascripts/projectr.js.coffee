@@ -7,6 +7,7 @@ Projectr = {
   apiBaseUrl: "https://api.github.com"
 
   updateIssue: ->
+    @_startLoading()
     @_updateRepo() unless @_language() == ''
 
   _updateRepo: ->
@@ -38,17 +39,26 @@ Projectr = {
 
    _displayIssue: (issue) ->
      $('#issue').html(_.template($('#issue_template').html(), { issue: issue }))
+     @_finishedLoading()
 
    _issueURL: (repo) ->
-     "#{@apiBaseUrl}/repos/#{repo.owner}/#{repo.name}/issues"
+     #"#{@apiBaseUrl}/repos/#{repo.owner}/#{repo.name}/issues"
+     "#{@apiBaseUrl}/repos/chelsea/projectr/issues"
 
    _language: ->
      $(@languageSelector).val()
+
+   _startLoading: ->
+     $('.content').addClass('loading')
+
+
+   _finishedLoading: ->
+     $('.content').removeClass('loading')
 }
 
 
 $(document).ready ->
-  Projectr.updateIssue()
+  #Projectr.updateIssue()
 
   $('#language').change ->
     issue    = Projectr.updateIssue()
