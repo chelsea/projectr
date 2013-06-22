@@ -35,7 +35,10 @@ Projectr = {
        issue = _.find response.data, (issue) ->
          issue.pull_request.html_url == null
 
-       @_displayIssue(issue)
+       if issue
+         @_displayIssue(issue)
+       else
+         @_updateRepo()
 
    _displayIssue: (issue) ->
      $('#issue').html(_.template($('#issue_template').html(), { issue: issue }))
