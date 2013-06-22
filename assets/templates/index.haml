@@ -143,8 +143,7 @@
 
   %script#issue_template(type='nyannyannyan')
     %h2 <%= issue.title %>
-    %a(href='<%= issue.html_url %>')
-      <%= issue.html_url %>
+    <%= "<a href='" + issue.html_url + "'>" + issue.html_url + "</a>" %>
 
     <%= marked(issue.body) %>
 
