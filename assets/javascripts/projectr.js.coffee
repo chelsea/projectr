@@ -45,8 +45,7 @@ Projectr = {
      @_finishedLoading()
 
    _issueURL: (repo) ->
-     #"#{@apiBaseUrl}/repos/#{repo.owner}/#{repo.name}/issues"
-     "#{@apiBaseUrl}/repos/chelsea/projectr/issues"
+     "#{@apiBaseUrl}/repos/#{repo.owner}/#{repo.name}/issues"
 
    _language: ->
      $(@languageSelector).val()
