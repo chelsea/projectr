@@ -3,14 +3,15 @@
 #= require vendor/mustache.js
 
 Projectr = {
+  languageSelector: '#language'
   apiBaseUrl: "https://api.github.com"
 
-  updateIssue: (language) ->
+  updateIssue: ->
     @_updateRepo()
 
-  _updateRepo: (language) ->
+  _updateRepo: ->
     $.ajax(
-      url: @_repoUrl(language)
+      url: @_repoUrl()
       dataType: 'jsonp'
     ).done (response) =>
       repo = _.find response.data.repositories, (repo) ->
@@ -18,8 +19,8 @@ Projectr = {
 
       @_updateIssueForRepo(repo)
 
-   _repoUrl: (language) ->
-      "#{@apiBaseUrl}/legacy/repos/search/#{@_randomLetter()}?language=#{language}"
+   _repoUrl: ->
+      "#{@apiBaseUrl}/legacy/repos/search/#{@_randomLetter()}?language=#{@_language()}"
 
    _randomLetter: ->
      letters = "abcdefghijklmnopqrstuvwxyz"
@@ -39,12 +40,17 @@ Projectr = {
      $('#issue').html(_.template($('#issue_template').html(), { issue: issue }))
 
    _issueURL: (repo) ->
-     window.repo = repo
      "#{@apiBaseUrl}/repos/#{repo.owner}/#{repo.name}/issues"
+
+   _language: ->
+     $(@languageSelector).val()
 }
 
 
 $(document).ready ->
   $('#language').change ->
-    language = $(this).val()
-    issue    = Projectr.updateIssue(language)
+    issue    = Projectr.updateIssue()
+
+  $('#new').click ->
+    issue    = Projectr.updateIssue()
+

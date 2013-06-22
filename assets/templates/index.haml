@@ -4,13 +4,16 @@ What should I work on?
   %option Ruby
   %option JavaScript
 
+%button#new I don't want to do that
 
 %script(src="/javascripts/projectr.js")
 
 %script#issue_template(type='nyannyannyan')
-  %h1 <%= issue.html_url %>
+  %h2 <%= issue.title %>
+  %a(href='<%= issue.html_url %>')
+    <%= issue.html_url %>
+
+  %p
+    <%= issue.body %>
 
   <% _.each(issue.labels, function(label) { %> <%= label.name %> <% }); %>
-
-
-#issue
