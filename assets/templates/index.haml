@@ -1,2 +1,16 @@
 What should I work on?
 
+%select#language
+  %option Ruby
+  %option JavaScript
+
+
+%script(src="/javascripts/projectr.js")
+
+%script#issue_template(type='nyannyannyan')
+  %h1 <%= issue.html_url %>
+
+  <% _.each(issue.labels, function(label) { %> <%= label.name %> <% }); %>
+
+
+#issue
