@@ -2,9 +2,33 @@
 @import "compass/css3/border-radius"
 @import "compass"
 
+body, html
+  margin: 0
+  padding: 0
+  color: #333333
+
+h1
+  font-size: 38px
+  margin-bottom: 25px
+  text-align: center
+  font-weight: bold
+  font-family: Helvetica
+
+a
+  color: #4183c4
+
+select
+  display: block
+  width: 20%
+  margin: 13px auto 0
+  font-size: 1em
+  border-color: #999
+  padding: 5px
+
 body
   font-family: 'Lucida Grande'
   line-height: 1.4em
+  background: #f6f6f6
 
 @keyframes rotate-loading
   0%
@@ -125,12 +149,53 @@ body
     -o-transform: rotate(360deg)
     -moz-transform: rotate(360deg)
 
-.content
-  margin: 5px 15px
+
+@keyframes loading-text-opacity
+  0%, 20%
+    opacity: 0
+  50%
+    opacity: 1
+  100%
+    opacity: 0
+
+
+@-moz-keyframes loading-text-opacity
+  0%, 20%
+    opacity: 0
+  50%
+    opacity: 1
+  100%
+    opacity: 0
+
+
+@-webkit-keyframes loading-text-opacity
+  0%, 20%
+    opacity: 0
+  50%
+    opacity: 1
+  100%
+    opacity: 0
+
+
+@-o-keyframes loading-text-opacity
+  0%, 20%
+    opacity: 0
+  50%
+    opacity: 1
+  100%
+    opacity: 0
+
+.loading-container-container
+  display: none
+  background: white
+  padding: 60px 0
 
 .loading
   #issue, button
     display: none
+
+  .loading-container-container
+    display: block
 
   .loading-container, .loading
     height: 30px
@@ -139,7 +204,7 @@ body
     border-radius: 100%
 
   .loading-container
-    margin: 40px auto
+    margin: 0px auto
 
   .loading
     border: 2px solid transparent
@@ -205,48 +270,96 @@ pre code, pre tt
   background-color: transparent
   border: none
 
+p
+  line-height: 25px
+  margin-bottom: 11px
+
 .labels
-  margin: 10px 5px
+  margin: 10px 0px
 
 .labels span
   +border-radius(5px)
-  padding: 5px
+  padding: 5px 10px
+  font-size: 10px
+  color: white
+  font-weight: bold
+
+#issue-container
+  background: white
+  border-bottom: 1px solid #e5e5e5
 
 #issue
-  margin: 10px 0px
+  width: 960px
+  margin: 0px auto
+  padding: 30px 0
+  text-align: left
 
   h2
-    border-bottom: thin solid #ccc
+    border-bottom: 1px solid #e5e5e5
+    padding-bottom: 10px
     margin-bottom: 10px
+    color: rgb(51, 51, 51)
+    font: 18px Helvetica, arial, freesans, clean, sans-serif
+    font-weight: bold
+    a
+      margin-top: 10px
+      display: block
+      font-weight: normal
 
-button
-  @include background-image(linear-gradient(#eee, #ccc))
-  border: 1px solid #ccc
-  border-bottom: 1px solid #bbb
-  border-radius: 3px
-  color: #333
-  font: bold 11px/1 "Lucida Grande", "Lucida Sans Unicode", "Lucida Sans", Geneva, Verdana, sans-serif
-  padding: 8px 0
-  text-align: center
-  text-shadow: 0 1px 0 #eee
-  width: 150px
+header
+  padding: 30px 0
+  border-bottom: 1px solid #e5e5e5
 
-  &:hover
-    @include background-image(linear-gradient(#ddd, #bbb))
-    border: 1px solid #bbb
-    border-bottom: 1px solid #999
-    cursor: pointer
-    text-shadow: 0 1px 0 #ddd
+  h2
+    text-align: center
+    width: 30%
+    margin: 0 auto
 
-  &:active
-    border: 1px solid #aaa
-    border-bottom: 1px solid #888
-    @include box-shadow(inset 0 0 5px 2px #aaa, 0 1px 0 0 #eee)
+#buttons
+  overflow: hidden
+  margin: 0 auto
 
-  &#do_it
+  #buttons-inner
+    padding-top: 30px
+    width: 45%
+    margin: 0 auto
+
+  button
+    width: 48%
+    @include background-image(linear-gradient(#eee, #ccc))
+    border: 1px solid #ccc
+    border-bottom: 1px solid #bbb
+    border-radius: 3px
+    color: #333
+    font: bold 15px/1 "Helvetica"
+    padding: 15px 0
+    text-align: center
+    text-shadow: 0 1px 0 #eee
+
+    &:hover
+      @include background-image(linear-gradient(#ddd, #bbb))
+      border: 1px solid #bbb
+      border-bottom: 1px solid #999
+      cursor: pointer
+      text-shadow: 0 1px 0 #ddd
+
+    &:active
+      border: 1px solid #aaa
+      border-bottom: 1px solid #888
+      @include box-shadow(inset 0 0 5px 2px #aaa, 0 1px 0 0 #eee)
+
+  #new
+    float: left
+
+  #do_it
+    float: right
     @include background-image(linear-gradient(#7fbf4d, #63a62f))
     text-shadow: 0 -1px 0 #4c9021
     color: #fff
     &:hover
       @include background-image(linear-gradient(#76b347, #5e9e2e))
 
+.rate-limit-exceeded
+  text-align: center !important
+  color: red
+  font-weight: bold

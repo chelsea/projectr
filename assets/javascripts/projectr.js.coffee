@@ -5,6 +5,7 @@
 Projectr = {
   languageSelector: '#language'
   issueSelector: '#issue'
+  buttonSelector: '#buttons'
   apiBaseUrl: "https://api.github.com"
 
   updateIssue: ->
@@ -74,7 +75,9 @@ Projectr = {
 
   _limitExceeded: ->
     @_finishedLoading()
-    $(@issueSelector).html('Request limit has been exceeded. Please try again from another IP Address')
+    $(@issueSelector).addClass('rate-limit-exceeded').html('Request limit has been exceeded. Please try again from another IP Address')
+    $(@buttonSelector).hide()
+
 }
 
 RepoCache = {
