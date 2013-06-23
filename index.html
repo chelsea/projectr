@@ -1,7 +1,12 @@
-<link href='stylesheets/projectr.css' rel='stylesheet'>
+<link href='/stylesheets/projectr.css' rel='stylesheet'>
 <div class='content'>
-  <h2>
-    What should I work on?
+  <header>
+    <h1>
+      Projectr
+    </h1>
+    <h2>
+      Let us know what language you like to program in, and we'll give you a random Github issue to fix!
+    </h2>
     <select id='language'>
       <option>JavaScript</option>
       <option>Ruby</option>
@@ -130,16 +135,24 @@
       <option>XSLT</option>
       <option>Xtend</option>
     </select>
-  </h2>
-  <div id='issue'></div>
-  <div class='loading-container'>
-    <div class='loading'>
-      <div class='loading-text'></div>
+  </header>
+  <div id='issue-container'>
+    <div id='issue'></div>
+  </div>
+  <div class='loading-container-container'>
+    <div class='loading-container'>
+      <div class='loading'>
+        <div class='loading-text'></div>
+      </div>
     </div>
   </div>
-  <button id='new'>I don't want to do that</button>
-  <button id='do_it'>Sounds good, let's do it!</button>
-  <script src='javascripts/projectr.js'></script>
+  <div id='buttons'>
+    <div id='buttons-inner'>
+      <button id='new'>I don't want to do that</button>
+      <button id='do_it'>Sounds good, let's do it!</button>
+    </div>
+  </div>
+  <script src='/javascripts/projectr.js'></script>
   <script id='issue_template' type='nyannyannyan'>
     <h2>
       <%= issue.title %>
