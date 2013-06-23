@@ -68,3 +68,5 @@ $(document).ready ->
   $('#new').click ->
     issue    = Projectr.updateIssue()
 
+  $('#do_it').click ->
+    window.location = $('#issue a').attr('href')

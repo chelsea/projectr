@@ -165,7 +165,7 @@ body
   margin: 5px 15px
 
 .loading
-  #issue
+  #issue, button
     display: none
 
   .loading-container, .loading
@@ -278,3 +278,11 @@ button
     border: 1px solid #aaa
     border-bottom: 1px solid #888
     @include box-shadow(inset 0 0 5px 2px #aaa, 0 1px 0 0 #eee)
+
+  &#do_it
+    @include background-image(linear-gradient(#7fbf4d, #63a62f))
+    text-shadow: 0 -1px 0 #4c9021
+    color: #fff
+    &:hover
+      @include background-image(linear-gradient(#76b347, #5e9e2e))
+
