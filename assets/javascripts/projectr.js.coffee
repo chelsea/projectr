@@ -60,7 +60,7 @@ Projectr = {
 
 
 $(document).ready ->
-  #Projectr.updateIssue()
+  Projectr.updateIssue()
 
   $('#language').change ->
     issue    = Projectr.updateIssue()
