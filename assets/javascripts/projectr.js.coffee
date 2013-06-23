@@ -90,26 +90,23 @@ RepoCache = {
       repo
 
   set: (language, repositories) ->
-    allRepositories = { }
-
-    if localStorage.repositories?
-      allRepositories = JSON.parse(localStorage.repositories)
-
+    allRepositories           = JSON.parse(localStorage.repositories)
     allRepositories[language] = @_filter(repositories)
     localStorage.repositories = JSON.stringify(allRepositories)
+
+  clear: ->
+    localStorage.repositories = JSON.stringify({})
 
   _filter: (repositories) ->
     repositories = _.filter repositories, (repo) ->
       repo.has_issues and repo.open_issues > 0
 
   _storage: (language) ->
-    if localStorage.repositories?
-      JSON.parse(localStorage.repositories)[language] || { }
-    else
-      { }
+    JSON.parse(localStorage.repositories)[language] || { }
 }
 
 $(document).ready ->
+  RepoCache.clear()
   Projectr.updateIssue()
 
   $('#language').change ->
