@@ -13,7 +13,7 @@ Projectr = {
     @_updateRepo() unless @_language() == ''
 
   _repoUrl: ->
-    "#{@apiBaseUrl}/legacy/repos/search/#{@_randomLetter()}?language=#{@_language()}"
+    "#{@apiBaseUrl}/legacy/repos/search/#{@_randomLetter()}?language=#{encodeURIComponent(@_language())}"
 
   _updateRepo: ->
     cachedRepo = RepoCache.get(@_language())
