@@ -11,20 +11,15 @@ Projectr = {
     @_startLoading()
     @_updateRepo() unless @_language() == ''
 
-  _updateRepo: ->
-    $.ajax(
-      url: @_repoUrl()
-      dataType: 'jsonp'
-    ).done (response) =>
-      if response.meta['X-RateLimit-Remaining'] is '0'
-        @_limitExceeded()
-      else
-        repo = _.find response.data.repositories, (repo) ->
-          repo.has_issues and repo.open_issues > 0
-
-        @_updateIssueForRepo(repo)
   _repoUrl: ->
     "#{@apiBaseUrl}/legacy/repos/search/#{@_randomLetter()}?language=#{@_language()}"
+
+  _updateRepo: ->
+    cachedRepo = RepoCache.get(@_language())
+    if cachedRepo?
+      @_updateIssueForRepo(cachedRepo)
+    else
+      @_updateCachedRepos()
 
   _randomLetter: ->
     letters = "abcdefghijklmnopqrstuvwxyz"
@@ -45,6 +40,21 @@ Projectr = {
           @_displayIssue(issue)
         else
           @_updateRepo()
+
+  _updateCachedRepos: ->
+    $.ajax(
+      url: @_repoUrl()
+      dataType: 'jsonp'
+    ).done (response) =>
+     if response.meta['X-RateLimit-Remaining'] is '0'
+       @_limitExceeded()
+     else
+      RepoCache.set(@_language(), response.data.repositories)
+      @_updateRepo()
+
+  _randomLetter: ->
+    letters = "abcdefghijklmnopqrstuvwxyz"
+    letters[Math.floor(Math.random() * (letters.length + 1))]
 
   _displayIssue: (issue) ->
     $(@issueSelector).html(_.template($('#issue_template').html(), { issue: issue }))
@@ -67,6 +77,34 @@ Projectr = {
     $(@issueSelector).html('Request limit has been exceeded. Please try again from another IP Address')
 }
 
+RepoCache = {
+  get: (language) ->
+    if @_storage(language).length > 0
+      repos = @_storage(language)
+      repo  = repos.pop()
+      @set(language, repos)
+
+      repo
+
+  set: (language, repositories) ->
+    allRepositories = { }
+
+    if localStorage.repositories?
+      allRepositories = JSON.parse(localStorage.repositories)
+
+    allRepositories[language] = @_filter(repositories)
+    localStorage.repositories = JSON.stringify(allRepositories)
+
+  _filter: (repositories) ->
+    repositories = _.filter repositories, (repo) ->
+      repo.has_issues and repo.open_issues > 0
+
+  _storage: (language) ->
+    if localStorage.repositories?
+      JSON.parse(localStorage.repositories)[language] || { }
+    else
+      { }
+}
 
 $(document).ready ->
   Projectr.updateIssue()
