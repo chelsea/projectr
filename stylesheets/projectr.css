@@ -45,9 +45,33 @@ a img {
 article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section, summary {
   display: block; }
 
+body, html {
+  margin: 0;
+  padding: 0;
+  color: #333333; }
+
+h1 {
+  font-size: 38px;
+  margin-bottom: 25px;
+  text-align: center;
+  font-weight: bold;
+  font-family: Helvetica; }
+
+a {
+  color: #4183c4; }
+
+select {
+  display: block;
+  width: 20%;
+  margin: 13px auto 0;
+  font-size: 1em;
+  border-color: #999999;
+  padding: 5px; }
+
 body {
   font-family: "Lucida Grande";
-  line-height: 1.4em; }
+  line-height: 1.4em;
+  background: #f6f6f6; }
 
 @keyframes rotate-loading {
   0% {
@@ -209,18 +233,22 @@ body {
   100% {
     opacity: 0; } }
 
-.content {
-  margin: 5px 15px; }
+.loading-container-container {
+  display: none;
+  background: white;
+  padding: 60px 0; }
 
 .loading #issue, .loading button {
   display: none; }
+.loading .loading-container-container {
+  display: block; }
 .loading .loading-container, .loading .loading {
   height: 30px;
   position: relative;
   width: 30px;
   border-radius: 100%; }
 .loading .loading-container {
-  margin: 40px auto; }
+  margin: 0px auto; }
 .loading .loading {
   border: 2px solid transparent;
   border-color: transparent #333333 transparent #333333;
@@ -283,8 +311,12 @@ pre code, pre tt {
   background-color: transparent;
   border: none; }
 
+p {
+  line-height: 25px;
+  margin-bottom: 11px; }
+
 .labels {
-  margin: 10px 5px; }
+  margin: 10px 0px; }
 
 .labels span {
   -webkit-border-radius: 5px;
@@ -292,46 +324,82 @@ pre code, pre tt {
   -ms-border-radius: 5px;
   -o-border-radius: 5px;
   border-radius: 5px;
-  padding: 5px; }
+  padding: 5px 10px;
+  font-size: 10px;
+  color: white;
+  font-weight: bold; }
+
+#issue-container {
+  background: white;
+  border-bottom: 1px solid #e5e5e5; }
 
 #issue {
-  margin: 10px 0px; }
+  width: 960px;
+  margin: 0px auto;
+  padding: 30px 0;
+  text-align: left; }
   #issue h2 {
-    border-bottom: thin solid #cccccc;
-    margin-bottom: 10px; }
+    border-bottom: 1px solid #e5e5e5;
+    padding-bottom: 10px;
+    margin-bottom: 10px;
+    color: #333333;
+    font: 18px Helvetica, arial, freesans, clean, sans-serif;
+    font-weight: bold; }
+    #issue h2 a {
+      margin-top: 10px;
+      display: block;
+      font-weight: normal; }
 
-button {
-  background-image: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #eeeeee), color-stop(100%, #cccccc));
-  background-image: -webkit-linear-gradient(#eeeeee, #cccccc);
-  background-image: -moz-linear-gradient(#eeeeee, #cccccc);
-  background-image: -o-linear-gradient(#eeeeee, #cccccc);
-  background-image: linear-gradient(#eeeeee, #cccccc);
-  border: 1px solid #cccccc;
-  border-bottom: 1px solid #bbbbbb;
-  border-radius: 3px;
-  color: #333333;
-  font: bold 11px/1 "Lucida Grande", "Lucida Sans Unicode", "Lucida Sans", Geneva, Verdana, sans-serif;
-  padding: 8px 0;
-  text-align: center;
-  text-shadow: 0 1px 0 #eeeeee;
-  width: 150px; }
-  button:hover {
-    background-image: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #dddddd), color-stop(100%, #bbbbbb));
-    background-image: -webkit-linear-gradient(#dddddd, #bbbbbb);
-    background-image: -moz-linear-gradient(#dddddd, #bbbbbb);
-    background-image: -o-linear-gradient(#dddddd, #bbbbbb);
-    background-image: linear-gradient(#dddddd, #bbbbbb);
-    border: 1px solid #bbbbbb;
-    border-bottom: 1px solid #999999;
-    cursor: pointer;
-    text-shadow: 0 1px 0 #dddddd; }
-  button:active {
-    border: 1px solid #aaaaaa;
-    border-bottom: 1px solid #888888;
-    -webkit-box-shadow: inset 0 0 5px 2px #aaaaaa, 0 1px 0 0 #eeeeee;
-    -moz-box-shadow: inset 0 0 5px 2px #aaaaaa, 0 1px 0 0 #eeeeee;
-    box-shadow: inset 0 0 5px 2px #aaaaaa, 0 1px 0 0 #eeeeee; }
-  button#do_it {
+header {
+  padding: 30px 0;
+  border-bottom: 1px solid #e5e5e5; }
+  header h2 {
+    text-align: center;
+    width: 30%;
+    margin: 0 auto; }
+
+#buttons {
+  overflow: hidden;
+  margin: 0 auto; }
+  #buttons #buttons-inner {
+    padding-top: 30px;
+    width: 45%;
+    margin: 0 auto; }
+  #buttons button {
+    width: 48%;
+    background-image: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #eeeeee), color-stop(100%, #cccccc));
+    background-image: -webkit-linear-gradient(#eeeeee, #cccccc);
+    background-image: -moz-linear-gradient(#eeeeee, #cccccc);
+    background-image: -o-linear-gradient(#eeeeee, #cccccc);
+    background-image: linear-gradient(#eeeeee, #cccccc);
+    border: 1px solid #cccccc;
+    border-bottom: 1px solid #bbbbbb;
+    border-radius: 3px;
+    color: #333333;
+    font: bold 15px/1 "Helvetica";
+    padding: 15px 0;
+    text-align: center;
+    text-shadow: 0 1px 0 #eeeeee; }
+    #buttons button:hover {
+      background-image: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #dddddd), color-stop(100%, #bbbbbb));
+      background-image: -webkit-linear-gradient(#dddddd, #bbbbbb);
+      background-image: -moz-linear-gradient(#dddddd, #bbbbbb);
+      background-image: -o-linear-gradient(#dddddd, #bbbbbb);
+      background-image: linear-gradient(#dddddd, #bbbbbb);
+      border: 1px solid #bbbbbb;
+      border-bottom: 1px solid #999999;
+      cursor: pointer;
+      text-shadow: 0 1px 0 #dddddd; }
+    #buttons button:active {
+      border: 1px solid #aaaaaa;
+      border-bottom: 1px solid #888888;
+      -webkit-box-shadow: inset 0 0 5px 2px #aaaaaa, 0 1px 0 0 #eeeeee;
+      -moz-box-shadow: inset 0 0 5px 2px #aaaaaa, 0 1px 0 0 #eeeeee;
+      box-shadow: inset 0 0 5px 2px #aaaaaa, 0 1px 0 0 #eeeeee; }
+  #buttons #new {
+    float: left; }
+  #buttons #do_it {
+    float: right;
     background-image: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #7fbf4d), color-stop(100%, #63a62f));
     background-image: -webkit-linear-gradient(#7fbf4d, #63a62f);
     background-image: -moz-linear-gradient(#7fbf4d, #63a62f);
@@ -339,9 +407,14 @@ button {
     background-image: linear-gradient(#7fbf4d, #63a62f);
     text-shadow: 0 -1px 0 #4c9021;
     color: white; }
-    button#do_it:hover {
+    #buttons #do_it:hover {
       background-image: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #76b347), color-stop(100%, #5e9e2e));
       background-image: -webkit-linear-gradient(#76b347, #5e9e2e);
       background-image: -moz-linear-gradient(#76b347, #5e9e2e);
       background-image: -o-linear-gradient(#76b347, #5e9e2e);
       background-image: linear-gradient(#76b347, #5e9e2e); }
+
+.rate-limit-exceeded {
+  text-align: center !important;
+  color: red;
+  font-weight: bold; }
