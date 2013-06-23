@@ -1,0 +1,153 @@
+<link href='stylesheets/projectr.css' rel='stylesheet'>
+<div class='content'>
+  <h2>
+    What should I work on?
+    <select id='language'>
+      <option>JavaScript</option>
+      <option>Ruby</option>
+      <option>Java</option>
+      <option>Shell</option>
+      <option>Python</option>
+      <option>PHP</option>
+      <option>C</option>
+      <option>C++</option>
+      <option>Perl</option>
+      <option>CoffeeScript</option>
+      <option value=''>---</option>
+      <option>ABAP</option>
+      <option>ActionScript</option>
+      <option>Ada</option>
+      <option>Apex</option>
+      <option>AppleScript</option>
+      <option>Arc</option>
+      <option>Arduino</option>
+      <option>ASP</option>
+      <option>Assembly</option>
+      <option>Augeas</option>
+      <option>AutoHotkey</option>
+      <option>Awk</option>
+      <option>Boo</option>
+      <option>Bro</option>
+      <option>C</option>
+      <option>C#</option>
+      <option>C++</option>
+      <option>Ceylon</option>
+      <option>CLIPS</option>
+      <option>Clojure</option>
+      <option>CoffeeScript</option>
+      <option>ColdFusion</option>
+      <option>Common Lisp</option>
+      <option>Coq</option>
+      <option>D</option>
+      <option>Dart</option>
+      <option>DCPU-16 ASM</option>
+      <option>Delphi</option>
+      <option>DOT</option>
+      <option>Dylan</option>
+      <option>eC</option>
+      <option>Ecl</option>
+      <option>Eiffel</option>
+      <option>Elixir</option>
+      <option>Emacs Lisp</option>
+      <option>Erlang</option>
+      <option>F#</option>
+      <option>Factor</option>
+      <option>Fancy</option>
+      <option>Fantom</option>
+      <option>Forth</option>
+      <option>FORTRAN</option>
+      <option>Go</option>
+      <option>Gosu</option>
+      <option>Groovy</option>
+      <option>Haskell</option>
+      <option>Haxe</option>
+      <option>Io</option>
+      <option>Ioke</option>
+      <option>Java</option>
+      <option>JavaScript</option>
+      <option>Julia</option>
+      <option>Kotlin</option>
+      <option>Lasso</option>
+      <option>LiveScript</option>
+      <option>Logos</option>
+      <option>Logtalk</option>
+      <option>Lua</option>
+      <option>M</option>
+      <option>Matlab</option>
+      <option>Max</option>
+      <option>Mirah</option>
+      <option>Monkey</option>
+      <option>MoonScript</option>
+      <option>Nemerle</option>
+      <option>Nimrod</option>
+      <option>Nu</option>
+      <option>Objective-C</option>
+      <option>Objective-J</option>
+      <option>OCaml</option>
+      <option>Omgrofl</option>
+      <option>ooc</option>
+      <option>Opa</option>
+      <option>OpenEdge ABL</option>
+      <option>Parrot</option>
+      <option>Perl</option>
+      <option>PHP</option>
+      <option>Pike</option>
+      <option>PogoScript</option>
+      <option>PowerShell</option>
+      <option>Processing</option>
+      <option>Prolog</option>
+      <option>Puppet</option>
+      <option>Pure Data</option>
+      <option>Python</option>
+      <option>R</option>
+      <option>Racket</option>
+      <option>Ragel in Ruby Host</option>
+      <option>Rebol</option>
+      <option>Rouge</option>
+      <option>Ruby</option>
+      <option>Rust</option>
+      <option>Scala</option>
+      <option>Scheme</option>
+      <option>Scilab</option>
+      <option>Self</option>
+      <option>Shell</option>
+      <option>Smalltalk</option>
+      <option>Standard ML</option>
+      <option>SuperCollider</option>
+      <option>Tcl</option>
+      <option>Turing</option>
+      <option>TXL</option>
+      <option>TypeScript</option>
+      <option>Vala</option>
+      <option>Verilog</option>
+      <option>VHDL</option>
+      <option>VimL</option>
+      <option>Visual Basic</option>
+      <option>wisp</option>
+      <option>XML</option>
+      <option>XProc</option>
+      <option>XQuery</option>
+      <option>XSLT</option>
+      <option>Xtend</option>
+    </select>
+  </h2>
+  <div id='issue'></div>
+  <div class='loading-container'>
+    <div class='loading'>
+      <div class='loading-text'></div>
+    </div>
+  </div>
+  <button id='new'>I don't want to do that</button>
+  <button id='do_it'>Sounds good, let's do it!</button>
+  <script src='javascripts/projectr.js'></script>
+  <script id='issue_template' type='nyannyannyan'>
+    <h2>
+      <%= issue.title %>
+      <%= "<a href='" + issue.html_url + "'>" + issue.html_url + "</a>" %>
+    </h2>
+    <%= marked(issue.body) %>
+    <div class='labels'>
+      <% _.each(issue.labels, function(label) { %> <span style="background: #<%= label.color %>"><%= label.name %></span> <% }); %>
+    </div>
+  </script>
+</div>
