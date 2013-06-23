@@ -33,7 +33,7 @@ Projectr = {
        dataType: 'jsonp'
      ).done (response) =>
        issue = _.find response.data, (issue) ->
-         issue.pull_request.html_url == null
+         issue.pull_request.html_url is null and issue.body isnt '' and issue.body isnt null
 
        if issue
          @_displayIssue(issue)
