@@ -1173,7 +1173,7 @@ if (typeof exports === 'object') {
       }
     },
     _repoUrl: function() {
-      return "" + this.apiBaseUrl + "/legacy/repos/search/" + (this._randomLetter()) + "?language=" + (this._language());
+      return "" + this.apiBaseUrl + "/legacy/repos/search/" + (this._randomLetter()) + "?language=" + (encodeURIComponent(this._language()));
     },
     _updateRepo: function() {
       var cachedRepo;
@@ -1274,12 +1274,12 @@ if (typeof exports === 'object') {
     set: function(language, repositories) {
       var allRepositories;
 
-      allRepositories = {};
-      if (localStorage.repositories != null) {
-        allRepositories = JSON.parse(localStorage.repositories);
-      }
+      allRepositories = JSON.parse(localStorage.repositories);
       allRepositories[language] = this._filter(repositories);
       return localStorage.repositories = JSON.stringify(allRepositories);
+    },
+    clear: function() {
+      return localStorage.repositories = JSON.stringify({});
     },
     _filter: function(repositories) {
       return repositories = _.filter(repositories, function(repo) {
@@ -1287,15 +1287,12 @@ if (typeof exports === 'object') {
       });
     },
     _storage: function(language) {
-      if (localStorage.repositories != null) {
-        return JSON.parse(localStorage.repositories)[language] || {};
-      } else {
-        return {};
-      }
+      return JSON.parse(localStorage.repositories)[language] || {};
     }
   };
 
   $(document).ready(function() {
+    RepoCache.clear();
     Projectr.updateIssue();
     $('#language').change(function() {
       var issue;
