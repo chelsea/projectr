@@ -295,16 +295,30 @@ p
   text-align: left
 
   h2
-    border-bottom: 1px solid #e5e5e5
     padding-bottom: 10px
     margin-bottom: 10px
     color: rgb(51, 51, 51)
     font: 18px Helvetica, arial, freesans, clean, sans-serif
-    font-weight: bold
     a
       margin-top: 10px
-      display: block
+      font-weight: bold
+
+  .repository
+    border-bottom: 1px solid #e5e5e5
+    text-align: center
+
+    h2
       font-weight: normal
+      font-size: 24px
+      margin-bottom: 5px
+      padding-bottom: 0
+
+  .issue
+    margin-top: 50px
+    h2
+      font-weight: bold
+    a
+      display: block
 
 header
   padding: 30px 0
@@ -350,9 +364,11 @@ header
 
   #new
     float: left
+    margin-bottom: 35px
 
   #do_it
     float: right
+    margin-bottom: 35px
     @include background-image(linear-gradient(#7fbf4d, #63a62f))
     text-shadow: 0 -1px 0 #4c9021
     color: #fff

@@ -153,11 +153,20 @@
   %script(src="/javascripts/projectr.js")
 
   %script#issue_template(type='nyannyannyan')
-    %h2
-      <%= issue.title %>
-      <%= "<a href='" + issue.html_url + "'>" + issue.html_url + "</a>" %>
+    %section.repository
+      %h2
+        <%= "<a href='" + issue.repository.url + "'>" + issue.repository.name + "</a>" %>
 
-    <%= marked(issue.body) %>
+      .description
+        <%= marked(issue.repository.description) %>
 
-    .labels
-      <% _.each(issue.labels, function(label) { %> <span style="background: #<%= label.color %>"><%= label.name %></span> <% }); %>
+    %section.issue
+      %h2
+        Issue #<%= issue.number %> <%= issue.title %>
+        <%= "<a href='" + issue.html_url + "'>" + issue.html_url + "</a>" %>
+
+      .body
+        <%= marked(issue.body) %>
+
+      .labels
+        <% _.each(issue.labels, function(label) { %> <span style="background: #<%= label.color %>"><%= label.name %></span> <% }); %>

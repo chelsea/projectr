@@ -38,6 +38,7 @@ Projectr = {
           issue.pull_request.html_url is null and issue.body isnt '' and issue.body isnt null
 
         if issue
+          issue.repository = repo
           @_displayIssue(issue)
         else
           @_updateRepo()
