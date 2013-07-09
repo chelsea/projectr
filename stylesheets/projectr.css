@@ -339,16 +339,32 @@ p {
   padding: 30px 0;
   text-align: left; }
   #issue h2 {
-    border-bottom: 1px solid #e5e5e5;
     padding-bottom: 10px;
     margin-bottom: 10px;
     color: #333333;
-    font: 18px Helvetica, arial, freesans, clean, sans-serif;
-    font-weight: bold; }
+    font: 18px Helvetica, arial, freesans, clean, sans-serif; }
     #issue h2 a {
       margin-top: 10px;
-      display: block;
-      font-weight: normal; }
+      font-weight: bold; }
+  #issue .by {
+    font-size: 16px; }
+  #issue .owner {
+    font-size: 20px;
+    font-weight: bold; }
+  #issue .repository {
+    border-bottom: 1px solid #e5e5e5;
+    text-align: center; }
+    #issue .repository h2 {
+      font-weight: normal;
+      font-size: 24px;
+      margin-bottom: 5px;
+      padding-bottom: 0; }
+  #issue .issue {
+    margin-top: 50px; }
+    #issue .issue h2 {
+      font-weight: bold; }
+    #issue .issue a {
+      display: block; }
 
 header {
   padding: 30px 0;
@@ -397,9 +413,11 @@ header {
       -moz-box-shadow: inset 0 0 5px 2px #aaaaaa, 0 1px 0 0 #eeeeee;
       box-shadow: inset 0 0 5px 2px #aaaaaa, 0 1px 0 0 #eeeeee; }
   #buttons #new {
-    float: left; }
+    float: left;
+    margin-bottom: 35px; }
   #buttons #do_it {
     float: right;
+    margin-bottom: 35px;
     background-image: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #7fbf4d), color-stop(100%, #63a62f));
     background-image: -webkit-linear-gradient(#7fbf4d, #63a62f);
     background-image: -moz-linear-gradient(#7fbf4d, #63a62f);

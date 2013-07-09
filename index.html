@@ -1,4 +1,7 @@
 <link href='stylesheets/projectr.css' rel='stylesheet'>
+<a href='https://github.com/chelsea/projectr'>
+  <img alt='Fork me on GitHub' src='https://s3.amazonaws.com/github/ribbons/forkme_right_red_aa0000.png' style='position: absolute; top: 0; right: 0; border: 0;'>
+</a>
 <div class='content'>
   <header>
     <h1>
@@ -152,16 +155,33 @@
       <button id='do_it'>Sounds good, let's do it!</button>
     </div>
   </div>
-
   <script src='javascripts/projectr.js'></script>
   <script id='issue_template' type='nyannyannyan'>
-    <h2>
-      <%= issue.title %>
-      <%= "<a href='" + issue.html_url + "'>" + issue.html_url + "</a>" %>
-    </h2>
-    <%= marked(issue.body) %>
-    <div class='labels'>
-      <% _.each(issue.labels, function(label) { %> <span style="background: #<%= label.color %>"><%= label.name %></span> <% }); %>
-    </div>
+    <section class='repository'>
+      <h2>
+        <%= "<a href='" + issue.repository.url + "'>" + issue.repository.name + "</a>" %>
+        <span class='by'>
+          by
+        </span>
+        <span class='owner'>
+          <%= issue.repository.owner %>
+        </span>
+      </h2>
+      <div class='description'>
+        <%= marked(issue.repository.description) %>
+      </div>
+    </section>
+    <section class='issue'>
+      <h2>
+        Issue #<%= issue.number %> <%= issue.title %>
+        <%= "<a href='" + issue.html_url + "'>" + issue.html_url + "</a>" %>
+      </h2>
+      <div class='body'>
+        <%= marked(issue.body) %>
+      </div>
+      <div class='labels'>
+        <% _.each(issue.labels, function(label) { %> <span style="background: #<%= label.color %>"><%= label.name %></span> <% }); %>
+      </div>
+    </section>
   </script>
 </div>
