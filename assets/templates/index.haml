@@ -156,6 +156,10 @@
     %section.repository
       %h2
         <%= "<a href='" + issue.repository.url + "'>" + issue.repository.name + "</a>" %>
+        %span.by
+          by
+        %span.owner
+          <%= issue.repository.owner %>
 
       .description
         <%= marked(issue.repository.description) %>
